@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>iTunesDB.Net</RootNamespace>
     <AssemblyName>iTunesDB.Net.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -21,6 +21,9 @@
     <SccLocalPath>Svn</SccLocalPath>
     <SccAuxPath>Svn</SccAuxPath>
     <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +33,7 @@
     <DefineConstants>TRACE;DEBUG;ASYNCx</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,11 +42,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
-      <HintPath>..\packages\NUnit.3.12.0\lib\net40\nunit.framework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -59,19 +63,19 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests\AlbumItemTests.cs" />
-    <Compile Include="Tests\DataObjectTests.cs" />
-    <Compile Include="Tests\EventTests.cs" />
-    <Compile Include="Tests\iTunesDbTests.cs" />
-    <Compile Include="Tests\ListContainerTests.cs" />
-    <Compile Include="Tests\PlayListItemsTests.cs" />
-    <Compile Include="Tests\PlayListsTests.cs" />
-    <Compile Include="Tests\ReaderTests.cs" />
+    <Compile Include="AlbumItemTests.cs" />
+    <Compile Include="DataObjectTests.cs" />
+    <Compile Include="EventTests.cs" />
+    <Compile Include="iTunesDbTests.cs" />
+    <Compile Include="ListContainerTests.cs" />
+    <Compile Include="PlayListItemsTests.cs" />
+    <Compile Include="PlayListsTests.cs" />
+    <Compile Include="ReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\FileTests.cs" />
-    <Compile Include="Tests\TestBase.cs" />
-    <Compile Include="Tests\TrackListTests.cs" />
-    <Compile Include="Tests\TrackTests.cs" />
+    <Compile Include="FileTests.cs" />
+    <Compile Include="TestBase.cs" />
+    <Compile Include="TrackListTests.cs" />
+    <Compile Include="TrackTests.cs" />
     <Compile Include="Writers\XmlWriter\XmlWriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +83,6 @@
       <Project>{b75d0848-346d-4030-ba7d-95dd96acedbc}</Project>
       <Name>iTunesDB.Net</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\iTunesDB">
@@ -92,6 +93,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -115,9 +117,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
