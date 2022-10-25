@@ -7,8 +7,10 @@ using NUnit.Framework;
 
 namespace iTunesDB.Net.Tests
 {
+    [TestFixture]
     public class PlayListsTests
     {
+        [TestFixture]
         public class WithFilledDb : TestBase
         {
             [Test, NUnit.Framework.Category("iTunesDb")]
