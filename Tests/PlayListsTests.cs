@@ -5,7 +5,7 @@ using iTunesDB.Net.Database;
 using iTunesDB.Net.Enumerations;
 using NUnit.Framework;
 
-namespace iTunesDB.Net.Tests
+namespace Tests
 {
     public class PlayListsTests
     {
